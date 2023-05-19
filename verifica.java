@@ -50,7 +50,8 @@ public class verifica extends JFrame implements ActionListener{
 				a1.add(temp);
 			}
 			}*/
-		}
+		}// Purtroppo oltre a non eseguire è anche sbagliato il metodo di aggiunta del numero all'array, Invece, il metodo aggiunge semplicemente il nuovo numero alla fine dell'ArrayList!!
+		//inoltre questo metodo non è associato a nessun evento!
 	public void Rimuovi() {
 		int n2=Integer.parseInt(jt1.getText());
 		for(int cont2=0;cont2<a1.size();cont2++) {
