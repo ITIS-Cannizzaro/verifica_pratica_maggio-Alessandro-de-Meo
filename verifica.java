@@ -82,15 +82,6 @@ public class verifica extends JFrame implements ActionListener{
 		f2.setVisible(true);
 		b4.addActionListener(e -> Rimuovi2());
 		txt.setText("Inserire il numero da rimuovere:");
-		/*
-		int n2=Integer.parseInt(ins.getText());
-		for(int cont2=0;cont2<a1.size();cont2++) {
-			if(n2==a1.get(cont2)){
-				a1.remove(cont2);
-				cont2--;
-			}
-		}
-		*/
 	}
 	public void Rimuovi2() {
 		tmp=0;
