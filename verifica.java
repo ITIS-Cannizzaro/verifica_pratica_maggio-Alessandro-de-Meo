@@ -12,12 +12,18 @@ public class verifica extends JFrame implements ActionListener{
 	JButton b3 = new JButton ("Visualizza");
 	JLabel j2 = new JLabel ("Risultato");
 	JTextArea ris = new JTextArea();
+	JLabel txt = new JLabel("Inserire il numero da rimuovere:");
+	JTextArea ins = new JTextArea();
+	JLabel resp = new JLabel();
+	JButton b4 = new JButton("Rimuovi");
+	int tmp;
 	public verifica() {
 		super ("Verifica");
-		Container c = this.getContentPane();
+		JFrame f1= new JFrame("Primo frame");
+		Container c = f1.getContentPane();
 		c.setLayout(null);
-		setSize(600,600);
-		setVisible(true);
+		f1.setSize(600,600);
+		f1.setVisible(true);
 		c.add(j1);
 		c.add(jt1);
 		c.add(b1);
@@ -38,26 +44,69 @@ public class verifica extends JFrame implements ActionListener{
 	}
 	public void Aggiungi() {
 		int n1=Integer.parseInt(jt1.getText());
-		/*int temp;*/
-		a1.add(n1);
-		/*for(int cont=0;cont<a1.size();cont++){
-			if(n1>=a1.get(cont)) {
-				a1.add(n1);
+		int temp;
+		if(a1.isEmpty()==true) {
+			a1.add(n1);
+		}
+		else {
+			if(n1<a1.get(a1.size()-1)) {
+				for(int cont=0;cont<a1.size();cont++){
+					if(n1<a1.get(cont)) {
+						temp=a1.get(cont);
+						a1.set(cont, n1);
+						n1=temp;
+					}
 				}
-			else {
-				temp=a1.get(cont);
-				a1.set(cont,n1);
-				a1.add(temp);
+				a1.add(n1);
 			}
-			}*/
-		}// Purtroppo oltre a non eseguire è anche sbagliato il metodo di aggiunta del numero all'array, Invece, il metodo aggiunge semplicemente il nuovo numero alla fine dell'ArrayList!!
-		//inoltre questo metodo non è associato a nessun evento!
+			else {
+				a1.add(n1);
+			}
+		}
+		}
 	public void Rimuovi() {
-		int n2=Integer.parseInt(jt1.getText());
+		JFrame f2= new JFrame("Secondo frame");
+		f2.setSize(600,600);
+		Container z = f2.getContentPane();
+		z.setLayout(null);
+		z.add(txt);
+		z.add(ins);
+		z.add(b4);
+		z.add(resp);
+		txt.setBounds(20,20,200,20);
+		ins.setBounds(20,50,50,20);
+		b4.setBounds(20,80,100,40);
+		resp.setBounds(20,140,250,20);
+		resp.setText("");
+		ins.setText("");
+		f2.setVisible(true);
+		b4.addActionListener(e -> Rimuovi2());
+		txt.setText("Inserire il numero da rimuovere:");
+		/*
+		int n2=Integer.parseInt(ins.getText());
 		for(int cont2=0;cont2<a1.size();cont2++) {
 			if(n2==a1.get(cont2)){
 				a1.remove(cont2);
+				cont2--;
 			}
+		}
+		*/
+	}
+	public void Rimuovi2() {
+		tmp=0;
+		int n2=Integer.parseInt(ins.getText());
+		for(int cont2=0;cont2<a1.size();cont2++) {
+			if(n2==a1.get(cont2)){
+				a1.remove(cont2);
+				cont2--;
+				tmp++;
+			}
+		}
+		if(tmp==0) {
+			resp.setText("Non sono presenti numeri "+n2+" da rimuovere");
+		}
+		else {
+			resp.setText("Sono stati rimossi tutti i numeri "+n2);
 		}
 	}
 	public void Visualizza() {
